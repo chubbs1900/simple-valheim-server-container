@@ -1,0 +1,4 @@
+server-data/
+.env
+.docker/
+.DS_Store

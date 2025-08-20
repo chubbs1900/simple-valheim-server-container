@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  valheim:
+    # For local testing build from source; for Portainer users use GHCR image (see README).
+    build: .
+    container_name: valheim_server
+    environment:
+      - TZ=America/New_York
+      - SERVER_NAME=Eldradia Reborn
+      - WORLD_NAME=EldradiaWorld
+      - SERVER_PASS=xdxdx
+      - SERVER_PUBLIC=1
+      - SERVER_PORT=2456
+      - ADMIN_LIST=
+      - SERVER_ARGS=
+    volumes:
+      # Change this for Portainer/Windows to a real path, e.g.:
+      # - "C:/Valheim Server:/server"
+      - ./server-data:/server
+    ports:
+      - "2456:2456/udp"
+      - "2457:2457/udp"
+      - "2458:2458/udp"
+    restart: unless-stopped
